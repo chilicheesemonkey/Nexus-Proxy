@@ -7,49 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <title>NETLII | Home</title>
     <style>
-        /* UPDATED GLOBAL BACKGROUND STYLE */
-html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: 'Nunito', sans-serif;
-    background: url('netlii-bg.avif') no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #000; /* Monochrome text to match the new background */
-}
+        /* GLOBAL BACKGROUND STYLE */
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Nunito', sans-serif;
+            background: url('netlii-bg.avif') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+        }
+
         :root {
             --text-color: #1a1a1a;
             --container-bg: rgba(255, 255, 255, 0.75);
-            --accent: #000;
         }
 
-        [data-theme="dark"] {
-            --text-color: #ffffff;
-            --container-bg: rgba(0, 0, 0, 0.7);
-            --accent: #fff;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            /* Background Image Setup */
-            background-image: url('netlii-bg.avif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            
-            transition: background-color 0.3s ease;
-        }
         /* Main UI Container */
         .glass-panel {
             background: var(--container-bg);
@@ -65,7 +42,6 @@ html, body {
         }
 
         h1 {
-            font-family: 'Nunito', sans-serif;
             font-size: 4rem;
             margin: 0 0 20px 0;
             letter-spacing: 12px;
@@ -73,48 +49,43 @@ html, body {
             font-weight: 900;
         }
 
+        /* INTEGRATED SEARCH BOX STYLING FROM NT.HTML */
         .search-box {
-      display: flex;
-      align-items: left;
-      gap: 8px;
-      background: #ffffff;
-      border: 5px solid #000000;
-      border-radius: 12px;
-      padding: 12px 16px;
-      width: 100%;
-      max-width: 340px;
-      margin-bottom: 40px;
-    }
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 5px;
+            border-radius: 50px;
+            border: 3px solid var(--text-color);
+            background: transparent;
+            margin-bottom: 40px;
+            position: relative;
+        }
 
-    .search-box i {
-      color: #71717a;
-      font-size: 14px;
-    }
+        .search-box input {
+            flex: 1;
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-family: 'Nunito', sans-serif;
+        }
 
-    .search-box input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #000000;
-      font-size: 14px;
-      font-family: inherit;
-    }
+        .search-box select {
+            background: var(--text-color);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin-right: 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            outline: none;
+            font-family: 'Nunito', sans-serif;
+        }
 
-    .search-box input::placeholder {
-      color: #52525b;
-    }
-
-    .search-box select {
-      background: #fff;
-      border: 3px solid #000;
-      border-radius: 6px;
-      color: #71717a;
-      padding: 6px 10px;
-      font-size: 12px;
-      cursor: pointer;
-      outline: none;
-    }
         /* Navigation icons */
         .nav-row {
             display: flex;
@@ -126,8 +97,9 @@ html, body {
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 10px;
             color: var(--text-color);
-            cursor: pointer;
+            text-decoration: none;
             transition: transform 0.2s;
         }
 
@@ -155,43 +127,57 @@ html, body {
 <body>
    <div class="glass-panel">
         <h1>NETLII</h1>
-         <form class="search-box" id="searchForm">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" id="searchInput" placeholder="Search the web..." autocomplete="off">
-    <select id="engine">
-      <option value="https://search.brave.com/search?q=">Brave</option>
-      <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
-      <option value="https://www.google.com/search?q=">Google</option>
-    </select>
-  </form>
-       <div class="nav-row">
-            <a href="https://netlii-games.pages.dev/projects" class="nav-item">
+        
+        <form class="search-box" id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search" autocomplete="off">
+            <select id="engine">
+                <option value="https://search.brave.com/search?q=">Brave</option>
+                <option value="https://duckduckgo.com/?q=">DDG</option>
+                <option value="https://www.google.com/search?q=">Google</option>
+            </select>
+        </form>
+
+        <div class="nav-row">
+            <a href="/projects" class="nav-item">
                 <div class="icon-circle">🎮</div>
                 <span class="icon-label">Games</span>
             </a>
-
-            <a href="https://netlii-games.pages.dev/yt" class="nav-item">
+            <a href="/yt" class="nav-item">
                 <div class="icon-circle">📱</div>
                 <span class="icon-label">YT unblock</span>
             </a>
-
-            <a href="https://netlii-games.pages.dev/misc" class="nav-item">
+            <a href="/misc" class="nav-item">
                 <div class="icon-circle">⚙️</div>
                 <span class="icon-label">Settings</span>
             </a>
-
-            <a href="https://netlii-games.pages.dev/movies/" class="nav-item">
+            <a href="/movies/" class="nav-item">
                 <div class="icon-circle">🍿</div>
                 <span class="icon-label">Movies</span>
             </a>
         </div>
+    </div>
+
     <script>
-  $('#searchForm').onsubmit = e => {
-      e.preventDefault();
-      const q = $('#searchInput').value.trim();
-      if (q) nav($('#engine').value + encodeURIComponent(q));
-    };
-</script>
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        const engineSelect = document.getElementById('engine');
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            const engine = engineSelect.value;
+            
+            if (query) {
+                // Construct the full URL based on selected engine
+                const fullSearchUrl = engine + encodeURIComponent(query);
+                
+                // Store the full URL for your proxy/browser page
+                localStorage.setItem('autoSearchQuery', fullSearchUrl);
+                
+                // Redirect to your unified browser page
+                window.location.href = '/active/'; 
+            }
+        });
     </script>
 </body>
 </html>
