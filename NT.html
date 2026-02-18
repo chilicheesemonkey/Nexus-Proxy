@@ -126,23 +126,48 @@ html, body {
             font-weight: 900;
         }
 
-        .search-bar {
-            width: 90%;
-            padding: 15px 25px;
-            border-radius: 50px;
-            border: 3px solid var(--text-color);
-            background: transparent;
-            color: var(--text-color);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            outline: none;
-        }
+        .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0f0f0f;
+      border: 1px solid #1f1f1f;
+      border-radius: 12px;
+      padding: 12px 16px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
 
-        .search-bar::placeholder {
-            color: var(--text-color);
-            opacity: 0.6;
-        }
+    .search-box i {
+      color: #71717a;
+      font-size: 14px;
+    }
 
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #e4e4e7;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .search-box input::placeholder {
+      color: #52525b;
+    }
+
+    .search-box select {
+      background: #1a1a1a;
+      border: none;
+      border-radius: 6px;
+      color: #71717a;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      outline: none;
+    }
         /* Navigation icons */
         .nav-row {
             display: flex;
@@ -184,22 +209,22 @@ html, body {
 <body>
    <div class="glass-panel">
         <h1>NETLII</h1>
-        <input type="text" id="home-search" class="search-bar" placeholder="Search">
+         <form class="search-box" id="searchForm">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" id="searchInput" placeholder="Search the web..." autocomplete="off">
+    <select id="engine">
+      <option value="https://search.brave.com/search?q=">Brave</option>
+      <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+      <option value="https://www.google.com/search?q=">Google</option>
+    </select>
+  </form>
 
 <script>
-  const homeSearch = document.getElementById('home-search');
-
-  homeSearch.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      const query = homeSearch.value.trim();
-      if (query) {
-        // Store the search term temporarily in the browser's memory
-        localStorage.setItem('autoSearchQuery', query);
-        // Redirect to your unified browser page
-        window.location.href = '/active/'; 
-      }
-    }
-  });
+  $('#searchForm').onsubmit = e => {
+      e.preventDefault();
+      const q = $('#searchInput').value.trim();
+      if (q) nav($('#engine').value + encodeURIComponent(q));
+    };
 </script>
        <div class="nav-row">
             <a href="https://netlii-games.pages.dev/projects" class="nav-item">
@@ -222,15 +247,5 @@ html, body {
                 <span class="icon-label">Movies</span>
             </a>
         </div>
-    <script>
-// Inside home
-if (e.key === 'Enter') {
-  const query = homeSearch.value.trim();
-  if (query) {
-    localStorage.setItem('autoSearchQuery', query); // This key must match tabs.mjs
-    window.location.href = '/active/'; // Or your active directory
-  }
-}
-    </script>
 </body>
 </html>
