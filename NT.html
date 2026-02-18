@@ -138,19 +138,19 @@
         </form>
 
         <div class="nav-row">
-            <a href="/projects" class="nav-item">
+            <a href="https://netlii-games.pages.dev/projects" class="nav-item">
                 <div class="icon-circle">🎮</div>
                 <span class="icon-label">Games</span>
             </a>
-            <a href="/yt" class="nav-item">
+            <a href="https://netlii-games.pages.dev/yt" class="nav-item">
                 <div class="icon-circle">📱</div>
                 <span class="icon-label">YT unblock</span>
             </a>
-            <a href="/misc" class="nav-item">
+            <a href="https://netlii-games.pages.dev/misc" class="nav-item">
                 <div class="icon-circle">⚙️</div>
                 <span class="icon-label">Settings</span>
             </a>
-            <a href="/movies/" class="nav-item">
+            <a href="https://netlii-games.pages.dev/movies-and-tv" class="nav-item">
                 <div class="icon-circle">🍿</div>
                 <span class="icon-label">Movies</span>
             </a>
@@ -158,26 +158,12 @@
     </div>
 
     <script>
-        const searchForm = document.getElementById('searchForm');
-        const searchInput = document.getElementById('searchInput');
-        const engineSelect = document.getElementById('engine');
+    $('#searchForm').onsubmit = e => {
+      e.preventDefault();
+      const q = $('#searchInput').value.trim();
+      if (q) nav($('#engine').value + encodeURIComponent(q));
+    };
 
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const query = searchInput.value.trim();
-            const engine = engineSelect.value;
-            
-            if (query) {
-                // Construct the full URL based on selected engine
-                const fullSearchUrl = engine + encodeURIComponent(query);
-                
-                // Store the full URL for your proxy/browser page
-                localStorage.setItem('autoSearchQuery', fullSearchUrl);
-                
-                // Redirect to your unified browser page
-                window.location.href = '/active/'; 
-            }
-        });
     </script>
 </body>
 </html>
