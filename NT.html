@@ -242,6 +242,7 @@
       const resetBtn = e.target.closest('#resetBtn');
 
       if (shortcut) {
+        e.preventDefault();
         nav(shortcut.dataset.url);
       } else if (uploadBtn) {
         bgUpload.click();
