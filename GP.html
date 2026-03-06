@@ -256,27 +256,35 @@
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-
     #zoneViewer {
-        position: fixed;
-        inset: 0;
-        background: #0d0021;
-        z-index: 2000;
-        display: none;
-        flex-direction: column;
-        overflow: hidden;
-    }
+    position: fixed;
+    inset: 0;
+    background: #0d0021; /* Matches the dark Nexus background */
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
 
-    .zone-header {
-        height: 70px;
-        background: var(--surface);
-        backdrop-filter: blur(20px);
-        border-bottom: 2px solid var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 24px;
-    }
+.zone-header {
+    height: 70px;
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    flex-shrink: 0; /* Prevents the header from squishing */
+}
+
+#zoneFrame {
+    flex-grow: 1;    /* Takes up all remaining vertical space */
+    border: none;
+    width: 100%;     /* Fills horizontal space completely */
+    height: calc(100vh - 70px); /* Specific height fallback */
+    display: block;
+}
 
     .zone-controls button {
         background: var(--gradient-primary);
@@ -315,7 +323,7 @@
         padding: 12px;
         border: none;
         border-radius: var(--radius-sm);
-        width: 100%;
+        width:\;
         font-weight: 800;
         box-shadow: var(--shadow-sm);
     }
@@ -362,7 +370,7 @@
             <div class="control-buttons">
 
                 <button id="settings" class="control-button" title="Settings!">
-                    <img src="https://raw.githubusercontent.com/Bubbergamesites/NETLii/refs/heads/main/Screenshot%202026-03-01%20095405.png" alt="settings">
+                    <img src="https://raw.githubusercontent.com/Bubbergamesites/NETLii/refs/heads/main/Screenshot_2026-03-01_095405-removebg-preview.png" alt="settings">
                 </button>
             </div>
         </div>
